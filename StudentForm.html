@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="fileupload.js"></script>
+    <script src="dateandTime.js"></script>
 
    <style type="text/css">
         body{
@@ -104,30 +105,14 @@
 
     });
 
+
     </script>
 
 
 </head>
-<body>
+<body onload="setDateandTime()">
 
-<script>
-   /* alert("comming inside js");
-    function readURL(input) {
-        alert("comming inside js");
-        var file = document.getElementById("upload").files[0].filename;
-        alert(file);
 
-        jQuery.ajax({
-            type: "POST",
-            url: 'uploadFile.php',
-            success:function(data) {
-                alert(data);
-            }
-        });
-
-        document.getElementById('profile').src=file;
-    }*/
-</script>
 
 <div class="container stud-profile">
     <form action="StudentInfo.php" method="post" style="align-self: center" enctype="multipart/form-data">
@@ -247,6 +232,7 @@
                     </div> </tr>
                 </table>
                 <input type="hidden" name="form_submitted" value="1" />
+                <input type="text" name="dateTime" id="dateTime" style="display: none">
                 <button type="submit" class="btn btn-default" id="submit">Submit</button>
                 <br>
             </div>

@@ -47,6 +47,7 @@ $marks4=$_POST['marks4'];
 $marks5=$_POST['marks5'];
 $marks6=$_POST['marks6'];
 $total=$marks1+$marks2+$marks3+$marks4+$marks5+$marks6;
+$dateTime=$_POST['dateTime'];
 
 if (isset($_POST['form_submitted']))
 {
@@ -87,7 +88,7 @@ if (isset($_POST['form_submitted']))
             background-color: aquamarine;
         }
         .control-label.required:before {
-            content: \"*\";
+            content: '*';
             color: red;
         }
         h3{
@@ -112,6 +113,7 @@ if (isset($_POST['form_submitted']))
 
     echo "
     <div class='container stud-profile'>
+     <label style='float: right'>date and time : ".$dateTime."</label>
     <center><h3>Student Personal Details</h3></center>
     <div class='row'>
         <div class='col-md-4'>
@@ -121,6 +123,7 @@ if (isset($_POST['form_submitted']))
                 
          </div>
         <div class='col-md-8'>
+       
            &emsp;&emsp;&emsp;&emsp; <center><table>
                 <tr><td><lable style='font-weight: bold'>Student Name        </lable></td><td>".$name." </td></tr>
                 <tr><td><lable style='font-weight: bold'>Date of Birth       </lable></td><td>".$dob."</td></tr>
