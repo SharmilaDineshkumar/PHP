@@ -1,0 +1,257 @@
+<html>
+<head>
+    <title>Student Registration form</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="fileupload.js"></script>
+
+   <style type="text/css">
+        body{
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        }
+        .stud-profile{
+            padding: 3%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+            border-radius: 0.5rem;
+            background: #fff;
+
+        }
+        label{
+            color: darkcyan;
+        }
+        .profile-img{
+            text-align: center;
+        }
+        .profile-img img{
+            margin-top: 10%;
+            width: 70%;
+            height: 50%;
+        }
+        .profile-img .file {
+            position: relative;
+            overflow: hidden;
+            margin-top: -55%;
+            width: 50%;
+
+            border: none;
+            border-radius: 0;
+            font-size: 10px;
+            background: #212529b8;
+        }
+        .profile-img .file input {
+            position: absolute;
+            width: 70%;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+        td{
+            padding: 10px;
+        }
+        input:focus{
+            background-color: aquamarine;
+        }
+        .control-label.required:before {
+            content: "*";
+            color: red;
+        }
+        h3{
+            font-family: Sylfaen;
+            font-weight: bold;
+        }
+
+        #yop,#lyop{
+            display: none;
+        }
+        #submit{
+            width: 75px;
+            height: 35px;
+            font-weight: bold;
+            box-shadow: 3px 3px aquamarine;
+            border-color: aqua;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+                $('[data-toggle="popover"]').popover();
+
+
+    $("#course").change(function(){
+    $(this).find("option:selected").each(function(){
+    var optionValue = $(this).attr("value");
+    //console.log(optionValue,"test var");
+    if(optionValue != 'nocourse'){
+
+    $("#yop").show();
+    $("#lyop").show();
+    } else{
+    $("#yop").hide();
+    $("#lyop").hide();
+    }
+    });
+    }).change();
+
+
+
+
+    });
+
+    </script>
+
+
+</head>
+<body>
+
+<script>
+   /* alert("comming inside js");
+    function readURL(input) {
+        alert("comming inside js");
+        var file = document.getElementById("upload").files[0].filename;
+        alert(file);
+
+        jQuery.ajax({
+            type: "POST",
+            url: 'uploadFile.php',
+            success:function(data) {
+                alert(data);
+            }
+        });
+
+        document.getElementById('profile').src=file;
+    }*/
+</script>
+
+<div class="container stud-profile">
+    <form action="StudentInfo.php" method="post" style="align-self: center" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img src="#" alt="" id="profile"/>
+                <div class="file btn btn-lg btn-primary">
+                    upload Photo
+                    <input type="file" name="fileToUpload" id="fileToUpload" onchange="readURL(this)"/>
+                </div>
+
+            </div>
+        </div>
+
+
+            <div class="col-md-7">
+                <div class="stud-details">
+                    <h3>Student details</h3>
+
+                            <table>
+                                <tr> <div class="form-group">
+                                    <td>  <label for="sname" class="control-label required">Name    </label> </td>
+                                    <td>  <input type="text" class="form-control" name="sname" id="sname" style="width:300px" data-toggle="popover" data-placement="right" data-content="Name is required" data-trigger="focus" required> </td>
+                                </div></tr>
+
+                                <tr>  <div class="form-group">
+                                    <td>  <label for="dob" class="control-label required">DOB   </label> </td>
+                                    <td>  <input type="text" class="form-control" name="dob" id="dob" style="width:300px" data-toggle="popover" data-placement="right" data-content="Enter dob in dd/mm/yyyy format" data-trigger="focus" required> </td>
+                                </div> </tr>
+
+                                <tr>   <div class="form-group">
+                                    <td> <label class="control-label required">Gender   </label> </td>
+                                    <td><div class="radio">
+                                        <label><input class="form-control" type="radio" name="genradio" checked>&emsp;Male</label>
+                                    <!--</div>&emsp;
+                                        <div class="radio">-->
+                                            <label><input class="form-control" type="radio" name="genradio">&emsp;Female</label>
+                                        </div> <td>
+                                </div> </tr>
+
+                                <tr><div class="form-group">
+                                    <td>   <label for="email" class="control-label required">Email    </label> </td>
+                                    <td>   <input type="email" class="form-control" name="email" id="email" style="width:300px" data-toggle="popover" data-placement="right" data-content="Enter in xyz@abc.com format" data-trigger="focus" required> </td>
+                                </div> </tr>
+                            </table>
+
+
+
+                </div>
+            </div>
+
+
+    </div>
+
+        <div class="container-fluid">
+            <hr size="4" width="100%" style="border-top: 1px solid darkcyan;">
+            <center><h3>Student Marks Details</h3></center>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <table>
+                <tr> <div class="form-group">
+                    <td>  <label for="course" class="control-label required">Select Course </label> </td>
+                    <td>  <select class="form-control" name="course" id="course" required>
+                        <option value="nocourse">-----Select course-----</option>
+                        <option value="cse">CSE</option>
+                        <option value="ece">ECE</option>
+                        <option value="eee">EEE</option>
+                        <option value="it">IT</option>
+                    </select> </td>
+                </div> </tr>
+
+                <tr> <div class="form-group">
+                    <td>  <label for="yop" class="control-label required" id="lyop">Year of Passing </label> </td>
+                    <td>  <select class="form-control" name="yop" id="yop" required>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                    </select> </td>
+                </div> </tr>
+                    <tr>  <div class="form-group">
+                        <td>  <label for="address" class="control-label">Address  </label> </td>
+                        <td>  <textarea class="form-control" rows="7" name="address" id="address" style="width:300px" data-toggle="popover" data-placement="right" data-content="Address is Optional" data-trigger="focus"></textarea> </td>
+                    </div> </tr>
+                </table>
+            </div>
+
+            <div class="col-md-6">
+               <!-- <h4>Enter Marks</h4>-->
+                <table>
+                    <tr>  <div class="form-group">
+                        <td>  <label for="marks1" class="control-label required">Mark 1 </label> </td>
+                        <td>  <input type="text" class="form-control" name="marks1" id="marks1" style="width:300px" data-toggle="popover" data-placement="right" data-content="Mark is required" data-trigger="focus" required> </td>
+                    </div> </tr>
+                    <tr>  <div class="form-group">
+                        <td>  <label for="marks2" class="control-label required">Mark 2</label> </td>
+                        <td>  <input type="text" class="form-control" name="marks2" id="marks2" style="width:300px" data-toggle="popover" data-placement="right" data-content="Mark is required" data-trigger="focus" required> </td>
+                    </div> </tr>
+                    <tr>  <div class="form-group">
+                        <td>  <label for="marks3" class="control-label required">Mark 3</label> </td>
+                        <td>  <input type="text" class="form-control" name="marks3" id="marks3" style="width:300px" data-toggle="popover" data-placement="right" data-content="Mark is required" data-trigger="focus" required> </td>
+                    </div> </tr>
+                    <tr>  <div class="form-group">
+                        <td>  <label for="marks4" class="control-label required">Mark 4</label> </td>
+                        <td>  <input type="text" class="form-control" name="marks4" id="marks4" style="width:300px" data-toggle="popover" data-placement="right" data-content="Mark is required" data-trigger="focus" required> </td>
+                    </div> </tr>
+                    <tr>  <div class="form-group">
+                        <td>  <label for="marks5" class="control-label required">Mark 5</label> </td>
+                        <td>  <input type="text" class="form-control" name="marks5" id="marks5" style="width:300px" data-toggle="popover" data-placement="right" data-content="Mark is required" data-trigger="focus" required> </td>
+                    </div> </tr>
+                    <tr>  <div class="form-group">
+                        <td>  <label for="marks6" class="control-label required">Mark 6</label> </td>
+                        <td>  <input type="text" class="form-control" name="marks6" id="marks6" style="width:300px" data-toggle="popover" data-placement="right" data-content="Mark is required" data-trigger="focus" required> </td>
+                    </div> </tr>
+                </table>
+                <input type="hidden" name="form_submitted" value="1" />
+                <button type="submit" class="btn btn-default" id="submit">Submit</button>
+                <br>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
